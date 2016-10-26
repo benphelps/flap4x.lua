@@ -9,6 +9,10 @@ FLAP4X = {
 
 console = require "utilities.bootstrap"
 
+MOUSE_LEFT_BUTTON = 1
+MOUSE_RIGHT_BUTTON = 2
+MOUSE_MIDDLE_BUTTON = 3
+
 function love.conf(conf)
     -- Global
     conf.version = "0.10.1"

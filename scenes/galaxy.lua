@@ -11,21 +11,16 @@ function GalaxyScene:initialize()
     self.stars = 1000
 end
 
-function GalaxyScene:update(dt)
-
+function GalaxyScene:load()
+    self.galaxy:load()
 end
 
-function GalaxyScene:draw()
-    -- local scaledX =
-    -- local scaledY =
-    for x = 1, 100*100 do
-        for y = 1, 100*100 do
-            local star = self.galaxy:starAt(x, y)
-            if star then
-                star:draw()
-            end
-        end
-    end
+function GalaxyScene:update(dt)
+    self.galaxy:update()
+end
+
+function GalaxyScene:draw(camera)
+    self.galaxy:draw(camera)
 end
 
 return GalaxyScene

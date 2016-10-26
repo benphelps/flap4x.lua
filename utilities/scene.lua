@@ -1,19 +1,14 @@
 --[[
     Flap4x - A flappy 4x space game.
+
+    The Scene prototype.
 ]]
 
 local Scene = class "Scene"
 
-function Scene:load()
-    -- console:notice('['..self:__tostring()..']'..' Scene:load() Not Implemeneted!')
-end
-
-function Scene:update(dt)
-    -- console:notice('['..self:__tostring()..']'..' Scene:update(dt) Not Implemeneted!')
-end
-
-function Scene:draw()
-    -- console:notice('['..self:__tostring()..']'..' Scene:draw() Not Implemeneted!')
-end
+function Scene:update(dt) end
+function Scene:draw() end
+function Scene:blur(newScene) end
+function Scene:focus(oldScene) end
 
 return Scene

@@ -17,7 +17,7 @@ local config = {
 	console_override_print = true,
 	console_height = 0.25,
 	console_key_repeat = true,
-	console_start_open = true,
+	console_start_open = false,
 
 	enable_remote = false,
 	font = "assets/fonts/monaco.ttf",
