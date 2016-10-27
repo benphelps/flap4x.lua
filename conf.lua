@@ -21,7 +21,8 @@ function love.conf(conf)
     -- Window
     conf.window.width = 1280
     conf.window.height = 720
-    conf.window.fullscreen = false
+    conf.window.resizeable = true
+    conf.window.fullscreen = true
     conf.window.title = "Flap4x"
     conf.window.icon = "assets/images/icon_black.png"
     -- Modules

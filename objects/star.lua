@@ -11,19 +11,9 @@ local function random(min, max)
    return min + offset
 end
 
-function StarObject:initialize(x, y)
-    self.star = false
-    self.x = x
-    self.y = y
-    -- lets create a star!
-    local roll = random(0.00, StarTypes.max)
-    local bestRarity = 100
-    for type, star in pairs(StarTypes.types) do
-        if star.rarity <= bestRarity then
-            self.star = star
-            bestRarity = star.rarity
-        end
-    end
+function StarObject:initialize(x, y, starType)
+    self.x, self.y = x, y
+    self.star = StarTypes.types[starType]
 end
 
 function StarObject:draw()

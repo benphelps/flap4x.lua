@@ -29,6 +29,7 @@ function love.draw()
     love.graphics.circle("fill", 0, 0, 15)
     sceneManager:draw(camera)
     camera:detach()
+    love.graphics.setColor(255, 255, 255)
     imgui.Render()
 end
 
@@ -84,8 +85,8 @@ local zoom = 1
 function love.wheelmoved(x, y)
     imgui.WheelMoved(y)
     if not imgui.GetWantCaptureMouse() then
-        if (zoom + ( y / 10 )  > 0) and (zoom + ( y / 10 ) < 1) then
-            zoom = zoom + ( y / 10 )
+        if (zoom + ( y / 10 ) >= 0.0) and (zoom + ( y / 10 ) < 1) then
+            zoom = zoom + ( y / 1000 )
             camera:zoomTo(zoom)
         end
     end
