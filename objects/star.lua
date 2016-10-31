@@ -4,6 +4,7 @@
 
 local StarTypes = require "assets.data.startypes"
 local StarObject = class 'StarObject'
+-- local img = love.graphics.newImage('assets/images/star.png')
 
 local function random(min, max)
    local range = max - min
@@ -16,9 +17,24 @@ function StarObject:initialize(x, y, starType)
     self.star = StarTypes.types[starType]
 end
 
-function StarObject:draw()
-    love.graphics.setColor(self.star.color[1], self.star.color[2], self.star.color[3], self.star.color[4])
-    love.graphics.circle("fill", self.x, self.y, 1)
+function StarObject:draw(camera)
+    if camera.scale > 1 then
+        love.graphics.circle("fill", self.x, self.y, 10)
+        love.graphics.setLineWidth(2)
+        love.graphics.circle("line", self.x, self.y, 100)
+    else
+        love.graphics.circle("fill", self.x, self.y, 100)
+    end
+
+
+    if camera.scale > 1 then
+
+    end
+
+end
+
+function StarObject:update(dt)
+
 end
 
 return StarObject

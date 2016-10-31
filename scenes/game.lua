@@ -21,7 +21,7 @@ function GameScene:load()
 end
 
 function GameScene:update(dt)
-    self.galaxy:update()
+    self.galaxy:update(dt)
 end
 
 function GameScene:draw(camera)

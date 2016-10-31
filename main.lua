@@ -15,6 +15,8 @@ function love.load()
     love.graphics.setBackgroundColor(20, 20, 20, 255)
     sceneManager:setScene("GameScene")
     sceneManager:load()
+    camera:zoomTo(0.5)
+    camera.smoother = Camera.smooth.damped(10)
 end
 
 function love.update(dt)
@@ -23,13 +25,11 @@ function love.update(dt)
 end
 
 function love.draw()
-    camera:attach()
-    camera:zoom(1)
     love.graphics.setColor(255, 255, 255)
-    love.graphics.circle("fill", 0, 0, 15)
+    camera:attach()
     sceneManager:draw(camera)
     camera:detach()
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(255, 255, 255, 255)
     imgui.Render()
 end
 
@@ -85,9 +85,16 @@ local zoom = 1
 function love.wheelmoved(x, y)
     imgui.WheelMoved(y)
     if not imgui.GetWantCaptureMouse() then
-        if (zoom + ( y / 10 ) >= 0.0) and (zoom + ( y / 10 ) < 1) then
-            zoom = zoom + ( y / 1000 )
-            camera:zoomTo(zoom)
+        local zoomStep = y / 50
+        local newZoom = zoom + zoomStep
+        print(newZoom)
+        if newZoom >= 0.05 and newZoom <= 2 then
+            zoom = newZoom
         end
+        camera:zoomTo(zoom)
+        -- local middleX, middleY = camera:worldCoords(love.graphics.getWidth()/2, love.graphics.getHeight()/2)
+        -- local mouseX, mouseY = camera:worldCoords(love.mouse.getPosition())
+        -- local lerpX, lerpY = (middleX + mouseX) / 2, (middleY + mouseY) / 2
+        -- camera:move(lerpX - camera.x, lerpY - camera.y)
     end
 end

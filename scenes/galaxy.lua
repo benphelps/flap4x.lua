@@ -16,10 +16,14 @@ function GalaxyScene:load()
 end
 
 function GalaxyScene:update(dt)
-    self.galaxy:update()
+    self.galaxy:update(dt)
 end
 
 function GalaxyScene:draw(camera)
+    local x, y = camera:worldCoords(love.mouse.getPosition())
+    imgui.Text("World X: " .. x)
+    imgui.Text("World Y: " .. y)
+    love.graphics.circle("fill", x, y, 10)
     self.galaxy:draw(camera)
 end
 
